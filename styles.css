@@ -725,6 +725,39 @@ a {
     color: #fff;
 }
 
+/* Platform subsections for simpler layout */
+.platform-subsection {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #333;
+}
+
+.platform-subsection:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.platform-subsection h3 {
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: #fff;
+    border-bottom: 1px solid #444;
+    padding-bottom: 6px;
+}
+
+.platform-subsection p {
+    color: #ccc;
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 6px;
+}
+
+.platform-subsection p:last-child {
+    margin-bottom: 0;
+}
+
 /* ----------------------------------------------------------------------------
    RELATIONSHIPS SECTION
    ---------------------------------------------------------------------------- */
@@ -781,6 +814,13 @@ a {
 
 .connection-entry a:hover {
     color: #66aaff;
+}
+
+/* Simple list for basic connections */
+.simple-list p {
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: #ccc;
 }
 
 /* ----------------------------------------------------------------------------
@@ -904,6 +944,38 @@ a {
     color: #ccc;
     font-size: 13px;
     line-height: 1.6;
+}
+
+/* Analysis metrics for simpler scoring */
+.analysis-metrics {
+    margin-top: 15px;
+}
+
+.metric-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border: 1px solid #666;
+    margin-bottom: 10px;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.metric-item:last-child {
+    margin-bottom: 0;
+}
+
+.metric-label {
+    font-weight: bold;
+    color: #fff;
+    min-width: 180px;
+    flex-shrink: 0;
+}
+
+.metric-value {
+    text-align: right;
+    color: #ccc;
+    flex-grow: 1;
 }
 
 /* ----------------------------------------------------------------------------
@@ -1064,5 +1136,19 @@ a {
     /* Adjust top nav title */
     .top-title {
         font-size: 14px;
+    }
+
+    /* Adjust metric items for mobile */
+    .metric-item {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .metric-label {
+        min-width: auto;
+    }
+
+    .metric-value {
+        text-align: left;
     }
 }
