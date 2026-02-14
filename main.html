@@ -31,6 +31,12 @@
             position: fixed;
             height: 100vh;
             overflow-y: auto;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .sidebar.hidden {
+            transform: translateX(-100%);
         }
         
         .sidebar .logo {
@@ -95,6 +101,26 @@
             margin-left: 250px;
             flex: 1;
             padding: 0;
+            transition: margin-left 0.3s ease;
+        }
+        
+        .main-content.full-width {
+            margin-left: 0;
+        }
+        
+        .sidebar-toggle {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            margin-right: 15px;
+        }
+        
+        .sidebar-toggle:hover {
+            background-color: #333;
         }
         
         .top-bar {
@@ -104,6 +130,11 @@
             border-bottom: 3px solid #000;
             display: flex;
             justify-content: space-between;
+            align-items: center;
+        }
+        
+        .top-bar-left {
+            display: flex;
             align-items: center;
         }
         
@@ -202,11 +233,73 @@
         .footer p {
             margin: 5px 0;
         }
+        
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.hidden {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar:not(.hidden) {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .content-area {
+                padding: 20px 15px;
+            }
+            
+            .top-bar {
+                padding: 15px;
+            }
+            
+            .top-bar .status {
+                font-size: 10px;
+            }
+            
+            .top-bar .date {
+                font-size: 10px;
+            }
+            
+            .classification-banner {
+                font-size: 10px;
+                padding: 6px 10px;
+            }
+            
+            .info-box {
+                padding: 15px;
+            }
+            
+            .info-box h3 {
+                font-size: 13px;
+            }
+            
+            .info-box p, .info-box ul li {
+                font-size: 12px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 200px;
+            }
+            
+            .top-bar .status {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="sidebar">
+        <div class="sidebar" id="sidebar">
             <div class="logo">
                 <h1>WURZ FILES</h1>
                 <div class="subtitle">Intelligence Database</div>
@@ -225,15 +318,18 @@
             </div>
         </div>
         
-        <div class="main-content">
+        <div class="main-content" id="mainContent">
             <div class="top-bar">
-                <div class="status">WURZ FILES DATABASE</div>
+                <div class="top-bar-left">
+                    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+                    <div class="status">WURZ FILES DATABASE</div>
+                </div>
                 <div class="date">FEB 14 2026</div>
             </div>
             
             <div class="content-area">
                 <div class="classification-banner">
-                    PUBLIC INFORMATION // WURZ EYES ONLY
+                    TOP SECRET // WURZ EYES ONLY
                 </div>
                 
                 <div class="info-box" id="overview">
@@ -284,10 +380,20 @@
                 </div>
             
             <div class="footer">
-                <p>PUBLIC INFORMATION // WURZ FILES</p>
+                <p>TOP SECRET // WURZ FILES</p>
                 <p>Last Updated: Feb 2026</p>
             </div>
         </div>
     </div>
+    
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('mainContent');
+            
+            sidebar.classList.toggle('hidden');
+            mainContent.classList.toggle('full-width');
+        }
+    </script>
 </body>
 </html>
