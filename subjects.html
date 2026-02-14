@@ -204,6 +204,89 @@
         .footer p {
             margin: 5px 0;
         }
+        
+        .search-container {
+            background-color: #fff;
+            border: 2px solid #000;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .search-container h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #000;
+            background-color: #f5f5f5;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            background-color: #fff;
+        }
+        
+        .search-button {
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .search-button:hover {
+            background-color: #333;
+        }
+        
+        .filter-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-tag {
+            padding: 5px 10px;
+            background-color: #d4d4d4;
+            border: 1px solid #000;
+            font-size: 11px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        
+        .filter-tag:hover {
+            background-color: #c0c0c0;
+        }
+        
+        .filter-tag.active {
+            background-color: #000;
+            color: #fff;
+        }
+        
+        .no-results {
+            background-color: #fff;
+            border: 2px solid #000;
+            padding: 30px;
+            text-align: center;
+            font-size: 13px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -235,9 +318,26 @@
             
             <div class="content-area">
                 <div class="classification-banner">
-                    TOP SECRET // WURZ EYES ONLY
+                    PUBLIC INFORMATION // THROUGH THE EYES
                 </div>
                 
+                <div class="search-container">
+                    <h3>Search Database</h3>
+                    <div class="search-box">
+                        <input type="text" id="searchInput" class="search-input" placeholder="Search by name, keyword, or file ID...">
+                        <button class="search-button" onclick="searchSubjects()">Search</button>
+                    </div>
+                    <div class="filter-tags">
+                        <div class="filter-tag" onclick="filterByClass('ALL')">All</div>
+                        <div class="filter-tag" onclick="filterByClass('ALPHA')">Alpha</div>
+                        <div class="filter-tag" onclick="filterByClass('BETA')">Beta</div>
+                        <div class="filter-tag" onclick="filterByClass('GAMMA')">Gamma</div>
+                        <div class="filter-tag" onclick="filterByClass('SIGMA')">Sigma</div>
+                        <div class="filter-tag" onclick="filterByClass('OMEGA')">Omega</div>
+                    </div>
+                </div>
+                
+                <div id="subjectContainer">
                 <!-- Subject Card Template - You can duplicate and modify these -->
                 
                 <a href="subject-001.html" style="text-decoration: none; color: inherit;">
@@ -335,13 +435,73 @@
                     </div>
                 </a>
                 
+                </div>
+                
+                <div class="no-results" id="noResults">
+                    <p>NO MATCHING SUBJECTS FOUND</p>
+                    <p style="margin-top: 10px; font-size: 11px;">Try adjusting your search terms or filters.</p>
+                </div>
+                
             </div>
             
             <div class="footer">
-                <p>TOP SECRET // WURZ FILES</p>
+                <p>PUBLIC INFORMATION // WURZ FILES</p>
                 <p>Last Updated: Feb 2026</p>
             </div>
         </div>
     </div>
+    
+    <script>
+        let currentFilter = 'ALL';
+        
+        function searchSubjects() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const subjects = document.querySelectorAll('#subjectContainer > a');
+            let visibleCount = 0;
+            
+            subjects.forEach(subject => {
+                const text = subject.textContent.toLowerCase();
+                const matchesSearch = text.includes(searchTerm);
+                const classTag = subject.querySelector('.classification-tag').textContent.trim();
+                const matchesFilter = currentFilter === 'ALL' || classTag === currentFilter;
+                
+                if (matchesSearch && matchesFilter) {
+                    subject.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    subject.style.display = 'none';
+                }
+            });
+            
+            // Show/hide no results message
+            document.getElementById('noResults').style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+        
+        function filterByClass(classification) {
+            currentFilter = classification;
+            
+            // Update active filter tag
+            document.querySelectorAll('.filter-tag').forEach(tag => {
+                tag.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Run search with current filter
+            searchSubjects();
+        }
+        
+        // Allow search on Enter key
+        document.getElementById('searchInput').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                searchSubjects();
+            } else {
+                // Real-time search as user types
+                searchSubjects();
+            }
+        });
+        
+        // Set "All" as default active filter
+        document.querySelector('.filter-tag').classList.add('active');
+    </script>
 </body>
 </html>
