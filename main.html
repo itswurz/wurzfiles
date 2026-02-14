@@ -3,397 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Wurz Files</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Courier New', monospace;
-            background-color: #e8e8e8;
-            color: #000;
-            line-height: 1.5;
-        }
-        
-        .container {
-            display: flex;
-            min-height: 100vh;
-        }
-        
-        .sidebar {
-            width: 250px;
-            background-color: #d4d4d4;
-            border-right: 3px solid #000;
-            padding: 20px;
-            position: fixed;
-            height: 100vh;
-            overflow-y: auto;
-            transition: transform 0.3s ease;
-            z-index: 1000;
-        }
-        
-        .sidebar.hidden {
-            transform: translateX(-100%);
-        }
-        
-        .sidebar .logo {
-            border: 2px solid #000;
-            padding: 15px;
-            margin-bottom: 20px;
-            background-color: #fff;
-            text-align: center;
-        }
-        
-        .sidebar .logo h1 {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .sidebar .logo .subtitle {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .sidebar .nav-section {
-            margin-bottom: 25px;
-        }
-        
-        .sidebar .nav-section h3 {
-            font-size: 11px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-            letter-spacing: 1px;
-            border-bottom: 1px solid #000;
-            padding-bottom: 5px;
-        }
-        
-        .sidebar .nav-section a {
-            display: block;
-            color: #000;
-            text-decoration: none;
-            padding: 5px 0;
-            font-size: 13px;
-            border-left: 3px solid transparent;
-            padding-left: 8px;
-        }
-        
-        .sidebar .nav-section a:hover {
-            border-left: 3px solid #000;
-            background-color: #c0c0c0;
-        }
-        
-        .sidebar .clearance {
-            border: 1px solid #000;
-            padding: 8px;
-            font-size: 10px;
-            text-align: center;
-            background-color: #000;
-            color: #fff;
-            margin-top: 30px;
-        }
-        
-        .main-content {
-            margin-left: 250px;
-            flex: 1;
-            padding: 0;
-            transition: margin-left 0.3s ease;
-        }
-        
-        .main-content.full-width {
-            margin-left: 0;
-        }
-        
-        .sidebar-toggle {
-            background-color: #000;
-            color: #fff;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-family: 'Courier New', monospace;
-            font-size: 18px;
-            margin-right: 15px;
-        }
-        
-        .sidebar-toggle:hover {
-            background-color: #333;
-        }
-        
-        .top-bar {
-            background-color: #000;
-            color: #fff;
-            padding: 15px 30px;
-            border-bottom: 3px solid #000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .top-bar-left {
-            display: flex;
-            align-items: center;
-        }
-        
-        .top-bar .status {
-            font-size: 11px;
-            letter-spacing: 2px;
-        }
-        
-        .top-bar .date {
-            font-size: 11px;
-        }
-        
-        .content-area {
-            padding: 30px 40px;
-        }
-        
-        .classification-banner {
-            background-color: #000;
-            color: #fff;
-            padding: 8px 20px;
-            text-align: center;
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 3px;
-            margin-bottom: 30px;
-        }
-        
-        .info-box {
-            background-color: #fff;
-            border: 2px solid #000;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .info-box h3 {
-            font-size: 14px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            border-bottom: 2px solid #000;
-            padding-bottom: 5px;
-            letter-spacing: 1px;
-        }
-        
-        .info-box p {
-            margin-bottom: 10px;
-            font-size: 13px;
-        }
-        
-        .info-box ul {
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .info-box ul li {
-            padding: 8px 0;
-            border-bottom: 1px solid #ccc;
-            font-size: 13px;
-        }
-        
-        .info-box ul li:before {
-            content: "▸ ";
-            font-weight: bold;
-            margin-right: 8px;
-        }
-        
-        .alert-box {
-            background-color: #fff;
-            border: 3px double #000;
-            padding: 15px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .alert-box .alert-title {
-            font-size: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-            letter-spacing: 2px;
-        }
-        
-        .alert-box p {
-            font-size: 11px;
-            line-height: 1.6;
-        }
-        
-        .footer {
-            background-color: #000;
-            color: #fff;
-            padding: 20px 40px;
-            margin-top: 40px;
-            font-size: 10px;
-            text-align: center;
-        }
-        
-        .footer p {
-            margin: 5px 0;
-        }
-        
-        /* Mobile Responsive Styles */
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-            
-            .sidebar.hidden {
-                transform: translateX(-100%);
-            }
-            
-            .sidebar:not(.hidden) {
-                transform: translateX(0);
-            }
-            
-            .main-content {
-                margin-left: 0;
-            }
-            
-            .content-area {
-                padding: 20px 15px;
-            }
-            
-            .top-bar {
-                padding: 15px;
-            }
-            
-            .top-bar .status {
-                font-size: 10px;
-            }
-            
-            .top-bar .date {
-                font-size: 10px;
-            }
-            
-            .classification-banner {
-                font-size: 10px;
-                padding: 6px 10px;
-            }
-            
-            .info-box {
-                padding: 15px;
-            }
-            
-            .info-box h3 {
-                font-size: 13px;
-            }
-            
-            .info-box p, .info-box ul li {
-                font-size: 12px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .sidebar {
-                width: 200px;
-            }
-            
-            .top-bar .status {
-                display: none;
-            }
-        }
-    </style>
+    <title>THE WURZ FILES // CLASSIFIED DATABASE</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="sidebar" id="sidebar">
-            <div class="logo">
-                <h1>WURZ FILES</h1>
-                <div class="subtitle">Intelligence Database</div>
-            </div>
-            
-            <div class="nav-section">
-                <h3>Navigation</h3>
-                <a href="#overview">Overview</a>
-                <a href="subjects.html">Subjects</a>
-                <a href="#incidents">Incidents</a>
-                <a href="#archive">Archive</a>
-            </div>
-            
-            <div class="clearance">
-                TOP SECRET
-            </div>
+    <!-- Classification Banner -->
+    <div class="classification-banner top">PUBLIC INFORMATION // FROM THE WORD OF MAN</div>
+    
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+        <div class="top-bar-title">THE WURZ FILES</div>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">█ TWF</div>
+            <div class="sidebar-subtitle">CLASSIFIED DATABASE</div>
         </div>
-        
-        <div class="main-content" id="mainContent">
-            <div class="top-bar">
-                <div class="top-bar-left">
-                    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
-                    <div class="status">WURZ FILES DATABASE</div>
-                </div>
-                <div class="date">FEB 14 2026</div>
-            </div>
-            
-            <div class="content-area">
-                <div class="classification-banner">
-                    TOP SECRET // WURZ EYES ONLY
-                </div>
-                
-                <div class="info-box" id="overview">
-                    <h3>Overview</h3>
-                    <p>
-                        The Wurz Files is a database of people from a Discord server. This site contains 
-                        information about their activities, behaviors, and other stuff that happened on the server.
-                    </p>
-                    <p>
-                        Each person has a file with their info. Everything here is supposed to be secret 
-                        and classified and all that.
-                    </p>
+        <ul class="nav-menu">
+            <li><a href="main.html" class="active">MAIN DATABASE</a></li>
+            <li><a href="subjects.html">SUBJECT FILES</a></li>
+            <li><a href="#">INCIDENT REPORTS</a></li>
+            <li><a href="#">ARCHIVE ACCESS</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="access-level">ACCESS LEVEL: PUBLIC</div>
+            <div class="timestamp" id="timestamp"></div>
+        </div>
+    </nav>
+
+    <!-- Overlay for mobile sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-wrapper">
+            <!-- Header Section -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="file-number">FILE: TWF-MAIN-001</div>
+                    <h1 class="page-title">THE WURZ FILES</h1>
+                    <div class="subtitle">COMPREHENSIVE DATABASE OF DISCORD SERVER PERSONNEL</div>
                 </div>
                 
                 <div class="info-box">
-                    <h3>Classification Levels</h3>
-                    <ul>
-                        <li>ALPHA - Important people</li>
-                        <li>BETA - Regular members</li>
-                        <li>GAMMA - Sometimes there</li>
-                        <li>OMEGA - Not active anymore</li>
-                        <li>SIGMA - Being investigated</li>
-                    </ul>
+                    <div class="info-box-header">SYSTEM OVERVIEW</div>
+                    <div class="info-box-content">
+                        <p>The Wurz Files represents a comprehensive intelligence gathering and documentation system 
+                        designed to catalog, analyze, and monitor all personnel within the designated Discord server 
+                        environment. This database maintains detailed profiles, behavioral analyses, and incident 
+                        reports for all active and inactive subjects.</p>
+                        
+                        <p>All information contained within this system is derived from publicly available Discord 
+                        interactions, voice channel activities, and message history. No classified or sensitive 
+                        information is stored or processed.</p>
+                    </div>
                 </div>
+            </section>
+
+            <!-- Classification Levels -->
+            <section class="section">
+                <h2 class="section-title">CLASSIFICATION LEVELS</h2>
                 
-                <div class="info-box" id="subjects">
-                    <h3>Subject Files</h3>
-                    <p>
-                        Click on the subjects section to see files on different people from the server. 
-                        Each file has information about what they do, how they act, and stuff they were involved in.
-                    </p>
+                <div class="classification-grid">
+                    <div class="classification-card alpha">
+                        <div class="classification-label">ALPHA</div>
+                        <div class="classification-desc">Minimal threat assessment. Standard server member. 
+                        Low activity monitoring required.</div>
+                    </div>
+                    
+                    <div class="classification-card beta">
+                        <div class="classification-label">BETA</div>
+                        <div class="classification-desc">Moderate engagement. Notable behavioral patterns. 
+                        Periodic surveillance recommended.</div>
+                    </div>
+                    
+                    <div class="classification-card gamma">
+                        <div class="classification-label">GAMMA</div>
+                        <div class="classification-desc">High activity subject. Significant server influence. 
+                        Regular monitoring protocols in effect.</div>
+                    </div>
+                    
+                    <div class="classification-card omega">
+                        <div class="classification-label">OMEGA</div>
+                        <div class="classification-desc">Maximum threat designation. Extreme chaos potential. 
+                        Continuous surveillance mandatory.</div>
+                    </div>
+                    
+                    <div class="classification-card sigma">
+                        <div class="classification-label">SIGMA</div>
+                        <div class="classification-desc">Unpredictable behavior patterns. Operates outside 
+                        standard parameters. Enhanced tracking active.</div>
+                    </div>
                 </div>
+            </section>
+
+            <!-- Database Sections -->
+            <section class="section">
+                <h2 class="section-title">DATABASE SECTIONS</h2>
                 
-                <div class="info-box" id="incidents">
-                    <h3>Incidents</h3>
-                    <p>
-                        This section has records of notable things that happened on the server. Drama, 
-                        arguments, funny moments, whatever seemed important enough to document.
-                    </p>
+                <div class="database-sections">
+                    <div class="db-section">
+                        <div class="db-section-number">01</div>
+                        <div class="db-section-title">SUBJECT FILES</div>
+                        <div class="db-section-desc">
+                            Comprehensive dossiers on all monitored individuals. Includes biographical data, 
+                            behavioral analysis, activity logs, and threat assessments. Access requires Level 1 
+                            clearance or higher.
+                        </div>
+                        <a href="subjects.html" class="db-section-link">ACCESS FILES →</a>
+                    </div>
+                    
+                    <div class="db-section">
+                        <div class="db-section-number">02</div>
+                        <div class="db-section-title">INCIDENT REPORTS</div>
+                        <div class="db-section-desc">
+                            Chronological documentation of notable events, conflicts, and occurrences within the 
+                            server environment. Cross-referenced with subject files for pattern analysis.
+                        </div>
+                        <div class="db-section-link disabled">COMING SOON →</div>
+                    </div>
+                    
+                    <div class="db-section">
+                        <div class="db-section-number">03</div>
+                        <div class="db-section-title">ARCHIVE ACCESS</div>
+                        <div class="db-section-desc">
+                            Historical records of former members, concluded incidents, and outdated intelligence. 
+                            Maintained for reference and pattern recognition purposes.
+                        </div>
+                        <div class="db-section-link disabled">COMING SOON →</div>
+                    </div>
                 </div>
-                
-                <div class="info-box" id="archive">
-                    <h3>Archive</h3>
-                    <p>
-                        Old records and files from people who left or things that happened a while ago. 
-                        Everything gets archived here so there's a complete record.
-                    </p>
+            </section>
+
+            <!-- Disclaimer -->
+            <section class="section">
+                <div class="disclaimer-box">
+                    <div class="disclaimer-header">⚠ DISCLAIMER</div>
+                    <div class="disclaimer-content">
+                        <p>THE WURZ FILES is a satirical project created for entertainment purposes within a 
+                        private Discord server community. All "classifications", "threat levels", and "intelligence 
+                        reports" are entirely fictional and humorous in nature.</p>
+                        
+                        <p>No actual surveillance, monitoring, or intelligence gathering is conducted. All content 
+                        is based on public Discord interactions and is created with the knowledge and consent of 
+                        all involved parties.</p>
+                        
+                        <p>This website is not affiliated with any government agency, intelligence organization, 
+                        or law enforcement entity. Any resemblance to actual classified documents is purely 
+                        coincidental and intended for comedic effect.</p>
+                    </div>
                 </div>
-            
-            <div class="footer">
-                <p>TOP SECRET // WURZ FILES</p>
-                <p>Last Updated: Feb 2026</p>
-            </div>
+            </section>
         </div>
-    </div>
-    
-    <script>
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const mainContent = document.getElementById('mainContent');
-            
-            sidebar.classList.toggle('hidden');
-            mainContent.classList.toggle('full-width');
-        }
-    </script>
+    </main>
+
+    <!-- Bottom Classification Banner -->
+    <div class="classification-banner bottom">PUBLIC INFORMATION // FROM THE WORD OF MAN</div>
+
+    <script src="script.js"></script>
 </body>
 </html>

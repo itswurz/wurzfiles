@@ -3,633 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subjects - The Wurz Files</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Courier New', monospace;
-            background-color: #e8e8e8;
-            color: #000;
-            line-height: 1.5;
-        }
-        
-        .container {
-            display: flex;
-            min-height: 100vh;
-        }
-        
-        .sidebar {
-            width: 250px;
-            background-color: #d4d4d4;
-            border-right: 3px solid #000;
-            padding: 20px;
-            position: fixed;
-            height: 100vh;
-            overflow-y: auto;
-            transition: transform 0.3s ease;
-            z-index: 1000;
-        }
-        
-        .sidebar.hidden {
-            transform: translateX(-100%);
-        }
-        
-        .sidebar .logo {
-            border: 2px solid #000;
-            padding: 15px;
-            margin-bottom: 20px;
-            background-color: #fff;
-            text-align: center;
-        }
-        
-        .sidebar .logo h1 {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .sidebar .logo .subtitle {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .sidebar .nav-section {
-            margin-bottom: 25px;
-        }
-        
-        .sidebar .nav-section h3 {
-            font-size: 11px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-            letter-spacing: 1px;
-            border-bottom: 1px solid #000;
-            padding-bottom: 5px;
-        }
-        
-        .sidebar .nav-section a {
-            display: block;
-            color: #000;
-            text-decoration: none;
-            padding: 5px 0;
-            font-size: 13px;
-            border-left: 3px solid transparent;
-            padding-left: 8px;
-        }
-        
-        .sidebar .nav-section a:hover {
-            border-left: 3px solid #000;
-            background-color: #c0c0c0;
-        }
-        
-        .sidebar .clearance {
-            border: 1px solid #000;
-            padding: 8px;
-            font-size: 10px;
-            text-align: center;
-            background-color: #000;
-            color: #fff;
-            margin-top: 30px;
-        }
-        
-        .main-content {
-            margin-left: 250px;
-            flex: 1;
-            padding: 0;
-            transition: margin-left 0.3s ease;
-        }
-        
-        .main-content.full-width {
-            margin-left: 0;
-        }
-        
-        .sidebar-toggle {
-            background-color: #000;
-            color: #fff;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-family: 'Courier New', monospace;
-            font-size: 18px;
-            margin-right: 15px;
-        }
-        
-        .sidebar-toggle:hover {
-            background-color: #333;
-        }
-        
-        .top-bar {
-            background-color: #000;
-            color: #fff;
-            padding: 15px 30px;
-            border-bottom: 3px solid #000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .top-bar-left {
-            display: flex;
-            align-items: center;
-        }
-        
-        .top-bar .status {
-            font-size: 11px;
-            letter-spacing: 2px;
-        }
-        
-        .top-bar .date {
-            font-size: 11px;
-        }
-        
-        .content-area {
-            padding: 30px 40px;
-        }
-        
-        .classification-banner {
-            background-color: #000;
-            color: #fff;
-            padding: 8px 20px;
-            text-align: center;
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 3px;
-            margin-bottom: 30px;
-        }
-        
-        .subject-card {
-            background-color: #fff;
-            border: 2px solid #000;
-            padding: 20px;
-            margin-bottom: 20px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        
-        .subject-card:hover {
-            background-color: #f9f9f9;
-        }
-        
-        .subject-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #000;
-            padding-bottom: 10px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .subject-name {
-            font-size: 18px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        
-        .subject-id {
-            font-size: 11px;
-            color: #666;
-        }
-        
-        .classification-tag {
-            background-color: #000;
-            color: #fff;
-            padding: 4px 8px;
-            font-size: 10px;
-            letter-spacing: 1px;
-        }
-        
-        .subject-info {
-            font-size: 13px;
-            line-height: 1.8;
-        }
-        
-        .subject-info p {
-            margin-bottom: 8px;
-        }
-        
-        .label {
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 11px;
-        }
-        
-        .threat-minimal { background-color: #90EE90; color: #000; }
-        .threat-low { background-color: #FFD700; color: #000; }
-        .threat-moderate { background-color: #FFA500; color: #000; }
-        .threat-elevated { background-color: #FF6347; color: #fff; }
-        
-        .footer {
-            background-color: #000;
-            color: #fff;
-            padding: 20px 40px;
-            margin-top: 40px;
-            font-size: 10px;
-            text-align: center;
-        }
-        
-        .footer p {
-            margin: 5px 0;
-        }
-        
-        .search-container {
-            background-color: #fff;
-            border: 2px solid #000;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .search-container h3 {
-            font-size: 14px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
-        
-        .search-box {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        
-        .search-input {
-            flex: 1;
-            padding: 10px;
-            border: 2px solid #000;
-            background-color: #f5f5f5;
-            font-family: 'Courier New', monospace;
-            font-size: 13px;
-        }
-        
-        .search-input:focus {
-            outline: none;
-            background-color: #fff;
-        }
-        
-        .search-button {
-            padding: 10px 20px;
-            background-color: #000;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            font-family: 'Courier New', monospace;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .search-button:hover {
-            background-color: #333;
-        }
-        
-        .filter-tags {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        
-        .filter-tag {
-            padding: 5px 10px;
-            background-color: #d4d4d4;
-            border: 1px solid #000;
-            font-size: 11px;
-            cursor: pointer;
-            text-transform: uppercase;
-        }
-        
-        .filter-tag:hover {
-            background-color: #c0c0c0;
-        }
-        
-        .filter-tag.active {
-            background-color: #000;
-            color: #fff;
-        }
-        
-        .no-results {
-            background-color: #fff;
-            border: 2px solid #000;
-            padding: 30px;
-            text-align: center;
-            font-size: 13px;
-            display: none;
-        }
-        
-        /* Mobile Responsive Styles */
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-            
-            .sidebar.hidden {
-                transform: translateX(-100%);
-            }
-            
-            .sidebar:not(.hidden) {
-                transform: translateX(0);
-            }
-            
-            .main-content {
-                margin-left: 0;
-            }
-            
-            .content-area {
-                padding: 20px 15px;
-            }
-            
-            .top-bar {
-                padding: 15px;
-            }
-            
-            .top-bar .status {
-                font-size: 10px;
-            }
-            
-            .top-bar .date {
-                font-size: 10px;
-            }
-            
-            .classification-banner {
-                font-size: 10px;
-                padding: 6px 10px;
-            }
-            
-            .subject-card {
-                padding: 15px;
-            }
-            
-            .subject-name {
-                font-size: 16px;
-            }
-            
-            .search-box {
-                flex-direction: column;
-            }
-            
-            .search-button {
-                width: 100%;
-            }
-            
-            .subject-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .sidebar {
-                width: 200px;
-            }
-            
-            .top-bar .status {
-                display: none;
-            }
-            
-            .subject-info p {
-                font-size: 12px;
-            }
-            
-            .filter-tags {
-                gap: 5px;
-            }
-            
-            .filter-tag {
-                font-size: 10px;
-                padding: 4px 8px;
-            }
-        }
-    </style>
+    <title>SUBJECT FILES // THE WURZ FILES</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="sidebar" id="sidebar">
-            <div class="logo">
-                <h1>WURZ FILES</h1>
-                <div class="subtitle">Intelligence Database</div>
-            </div>
-            
-            <div class="nav-section">
-                <h3>Navigation</h3>
-                <a href="main.html">Overview</a>
-                <a href="subjects.html">Subjects</a>
-                <a href="#incidents">Incidents</a>
-                <a href="#archive">Archive</a>
-            </div>
-            
-            <div class="clearance">
-                TOP SECRET
-            </div>
-        </div>
-        
-        <div class="main-content" id="mainContent">
-            <div class="top-bar">
-                <div class="top-bar-left">
-                    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
-                    <div class="status">SUBJECT REGISTRY</div>
-                </div>
-                <div class="date">FEB 14 2026</div>
-            </div>
-            
-            <div class="content-area">
-                <div class="classification-banner">
-                    TOP SECRET // WURZ EYES ONLY
-                </div>
-                
-                <div class="search-container">
-                    <h3>Search Database</h3>
-                    <div class="search-box">
-                        <input type="text" id="searchInput" class="search-input" placeholder="Search by name, keyword, or file ID...">
-                        <button class="search-button" onclick="searchSubjects()">Search</button>
-                    </div>
-                    <div class="filter-tags">
-                        <div class="filter-tag" onclick="filterByClass('ALL')">All</div>
-                        <div class="filter-tag" onclick="filterByClass('ALPHA')">Alpha</div>
-                        <div class="filter-tag" onclick="filterByClass('BETA')">Beta</div>
-                        <div class="filter-tag" onclick="filterByClass('GAMMA')">Gamma</div>
-                        <div class="filter-tag" onclick="filterByClass('SIGMA')">Sigma</div>
-                        <div class="filter-tag" onclick="filterByClass('OMEGA')">Omega</div>
-                    </div>
-                </div>
-                
-                <div id="subjectContainer">
-                <!-- Subject Card Template - You can duplicate and modify these -->
-                
-                <a href="subject-001.html" style="text-decoration: none; color: inherit;">
-                    <div class="subject-card">
-                        <div class="subject-header">
-                            <div>
-                                <div class="subject-name">Subject Name Here</div>
-                                <div class="subject-id">FILE ID: WF-SUBJ-001</div>
-                            </div>
-                            <div class="classification-tag threat-minimal">ALPHA</div>
-                        </div>
-                        <div class="subject-info">
-                            <p><span class="label">Threat Level:</span> MINIMAL</p>
-                            <p><span class="label">Activity Level:</span> High - Active daily</p>
-                            <p><span class="label">Known For:</span> [Brief description of what they're known for on the server]</p>
-                            <p><span class="label">Notable Incidents:</span> 3 documented</p>
-                            <p><span class="label">Status:</span> Active</p>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="subject-002.html" style="text-decoration: none; color: inherit;">
-                    <div class="subject-card">
-                        <div class="subject-header">
-                            <div>
-                                <div class="subject-name">Another Person</div>
-                                <div class="subject-id">FILE ID: WF-SUBJ-002</div>
-                            </div>
-                            <div class="classification-tag threat-low">BETA</div>
-                        </div>
-                        <div class="subject-info">
-                            <p><span class="label">Threat Level:</span> LOW</p>
-                            <p><span class="label">Activity Level:</span> Moderate - Several times per week</p>
-                            <p><span class="label">Known For:</span> [What makes them notable]</p>
-                            <p><span class="label">Notable Incidents:</span> 1 documented</p>
-                            <p><span class="label">Status:</span> Active</p>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="subject-003.html" style="text-decoration: none; color: inherit;">
-                    <div class="subject-card">
-                        <div class="subject-header">
-                            <div>
-                                <div class="subject-name">Discord User</div>
-                                <div class="subject-id">FILE ID: WF-SUBJ-003</div>
-                            </div>
-                            <div class="classification-tag threat-moderate">GAMMA</div>
-                        </div>
-                        <div class="subject-info">
-                            <p><span class="label">Threat Level:</span> MODERATE</p>
-                            <p><span class="label">Activity Level:</span> Low - Occasionally present</p>
-                            <p><span class="label">Known For:</span> [Their defining characteristic or behavior]</p>
-                            <p><span class="label">Notable Incidents:</span> 5 documented</p>
-                            <p><span class="label">Status:</span> Active</p>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="subject-004.html" style="text-decoration: none; color: inherit;">
-                    <div class="subject-card">
-                        <div class="subject-header">
-                            <div>
-                                <div class="subject-name">Server Member</div>
-                                <div class="subject-id">FILE ID: WF-SUBJ-004</div>
-                            </div>
-                            <div class="classification-tag threat-elevated">SIGMA</div>
-                        </div>
-                        <div class="subject-info">
-                            <p><span class="label">Threat Level:</span> ELEVATED</p>
-                            <p><span class="label">Activity Level:</span> Variable - Unpredictable presence</p>
-                            <p><span class="label">Known For:</span> [Something interesting or funny about them]</p>
-                            <p><span class="label">Notable Incidents:</span> 8 documented</p>
-                            <p><span class="label">Status:</span> Under Investigation</p>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="subject-005.html" style="text-decoration: none; color: inherit;">
-                    <div class="subject-card">
-                        <div class="subject-header">
-                            <div>
-                                <div class="subject-name">Inactive User</div>
-                                <div class="subject-id">FILE ID: WF-SUBJ-005</div>
-                            </div>
-                            <div class="classification-tag threat-minimal">OMEGA</div>
-                        </div>
-                        <div class="subject-info">
-                            <p><span class="label">Threat Level:</span> MINIMAL</p>
-                            <p><span class="label">Activity Level:</span> None - Last seen 6 months ago</p>
-                            <p><span class="label">Known For:</span> [What they were known for]</p>
-                            <p><span class="label">Notable Incidents:</span> 2 documented</p>
-                            <p><span class="label">Status:</span> Inactive / Archived</p>
-                        </div>
-                    </div>
-                </a>
-                
-                </div>
-                
-                <div class="no-results" id="noResults">
-                    <p>NO MATCHING SUBJECTS FOUND</p>
-                    <p style="margin-top: 10px; font-size: 11px;">Try adjusting your search terms or filters.</p>
-                </div>
-                
-            </div>
-            
-            <div class="footer">
-                <p>TOP SECRET // WURZ FILES</p>
-                <p>Last Updated: Feb 2026</p>
-            </div>
-        </div>
-    </div>
+    <!-- Classification Banner -->
+    <div class="classification-banner top">PUBLIC INFORMATION // FROM THE WORD OF MAN</div>
     
-    <script>
-        let currentFilter = 'ALL';
-        
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const mainContent = document.getElementById('mainContent');
-            
-            sidebar.classList.toggle('hidden');
-            mainContent.classList.toggle('full-width');
-        }
-        
-        function searchSubjects() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const subjects = document.querySelectorAll('#subjectContainer > a');
-            let visibleCount = 0;
-            
-            subjects.forEach(subject => {
-                const text = subject.textContent.toLowerCase();
-                const matchesSearch = text.includes(searchTerm);
-                const classTag = subject.querySelector('.classification-tag').textContent.trim();
-                const matchesFilter = currentFilter === 'ALL' || classTag === currentFilter;
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+        <div class="top-bar-title">THE WURZ FILES</div>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">█ TWF</div>
+            <div class="sidebar-subtitle">CLASSIFIED DATABASE</div>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="main.html">MAIN DATABASE</a></li>
+            <li><a href="subjects.html" class="active">SUBJECT FILES</a></li>
+            <li><a href="#">INCIDENT REPORTS</a></li>
+            <li><a href="#">ARCHIVE ACCESS</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="access-level">ACCESS LEVEL: PUBLIC</div>
+            <div class="timestamp" id="timestamp"></div>
+        </div>
+    </nav>
+
+    <!-- Overlay for mobile sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-wrapper">
+            <!-- Header Section -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="file-number">FILE: TWF-SUBJ-ALL</div>
+                    <h1 class="page-title">SUBJECT FILES</h1>
+                    <div class="subtitle">ACTIVE PERSONNEL DATABASE</div>
+                </div>
+            </section>
+
+            <!-- Search and Filter Controls -->
+            <section class="section">
+                <div class="controls-container">
+                    <div class="search-box">
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            class="search-input" 
+                            placeholder="SEARCH BY NAME OR FILE ID..."
+                        >
+                    </div>
+                    
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">ALL</button>
+                        <button class="filter-btn" data-filter="alpha">ALPHA</button>
+                        <button class="filter-btn" data-filter="beta">BETA</button>
+                        <button class="filter-btn" data-filter="gamma">GAMMA</button>
+                        <button class="filter-btn" data-filter="sigma">SIGMA</button>
+                        <button class="filter-btn" data-filter="omega">OMEGA</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Subjects Grid -->
+            <section class="section">
+                <div class="subjects-count">
+                    DISPLAYING <span id="displayCount">6</span> OF <span id="totalCount">6</span> SUBJECTS
+                </div>
                 
-                if (matchesSearch && matchesFilter) {
-                    subject.style.display = 'block';
-                    visibleCount++;
-                } else {
-                    subject.style.display = 'none';
-                }
-            });
-            
-            // Show/hide no results message
-            document.getElementById('noResults').style.display = visibleCount === 0 ? 'block' : 'none';
-        }
-        
-        function filterByClass(classification) {
-            currentFilter = classification;
-            
-            // Update active filter tag
-            document.querySelectorAll('.filter-tag').forEach(tag => {
-                tag.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            // Run search with current filter
-            searchSubjects();
-        }
-        
-        // Allow search on Enter key
-        document.getElementById('searchInput').addEventListener('keyup', function(event) {
-            if (event.key === 'Enter') {
-                searchSubjects();
-            } else {
-                // Real-time search as user types
-                searchSubjects();
-            }
-        });
-        
-        // Set "All" as default active filter
-        document.querySelector('.filter-tag').classList.add('active');
-    </script>
+                <div class="subjects-grid" id="subjectsGrid">
+                    <!-- Example Subject Cards - Replace with actual data -->
+                    
+                    <a href="subject-001.html" class="subject-card" data-classification="omega">
+                        <div class="card-header">
+                            <div class="card-id">TWF-001</div>
+                            <div class="card-classification omega">OMEGA</div>
+                        </div>
+                        <div class="card-name">SUBJECT NAME</div>
+                        <div class="card-info-grid">
+                            <div class="card-info-item">
+                                <div class="card-info-label">THREAT LEVEL</div>
+                                <div class="card-info-value">MAXIMUM</div>
+                            </div>
+                            <div class="card-info-item">
+                                <div class="card-info-label">ACTIVITY</div>
+                                <div class="card-info-value">CONSTANT</div>
+                            </div>
+                        </div>
+                        <div class="card-known-for">
+                            Known for: Chaos creation, unpredictable behavior patterns
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-incidents">12 INCIDENTS</div>
+                            <div class="card-status active">ACTIVE</div>
+                        </div>
+                    </a>
+
+                    <a href="subject-002.html" class="subject-card" data-classification="gamma">
+                        <div class="card-header">
+                            <div class="card-id">TWF-002</div>
+                            <div class="card-classification gamma">GAMMA</div>
+                        </div>
+                        <div class="card-name">ANOTHER SUBJECT</div>
+                        <div class="card-info-grid">
+                            <div class="card-info-item">
+                                <div class="card-info-label">THREAT LEVEL</div>
+                                <div class="card-info-value">ELEVATED</div>
+                            </div>
+                            <div class="card-info-item">
+                                <div class="card-info-label">ACTIVITY</div>
+                                <div class="card-info-value">HIGH</div>
+                            </div>
+                        </div>
+                        <div class="card-known-for">
+                            Known for: High engagement, community leadership
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-incidents">8 INCIDENTS</div>
+                            <div class="card-status active">ACTIVE</div>
+                        </div>
+                    </a>
+
+                    <a href="subject-003.html" class="subject-card" data-classification="sigma">
+                        <div class="card-header">
+                            <div class="card-id">TWF-003</div>
+                            <div class="card-classification sigma">SIGMA</div>
+                        </div>
+                        <div class="card-name">MYSTERIOUS ONE</div>
+                        <div class="card-info-grid">
+                            <div class="card-info-item">
+                                <div class="card-info-label">THREAT LEVEL</div>
+                                <div class="card-info-value">UNKNOWN</div>
+                            </div>
+                            <div class="card-info-item">
+                                <div class="card-info-label">ACTIVITY</div>
+                                <div class="card-info-value">SPORADIC</div>
+                            </div>
+                        </div>
+                        <div class="card-known-for">
+                            Known for: Unpredictable presence, enigmatic behavior
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-incidents">5 INCIDENTS</div>
+                            <div class="card-status active">ACTIVE</div>
+                        </div>
+                    </a>
+
+                    <a href="subject-004.html" class="subject-card" data-classification="beta">
+                        <div class="card-header">
+                            <div class="card-id">TWF-004</div>
+                            <div class="card-classification beta">BETA</div>
+                        </div>
+                        <div class="card-name">REGULAR MEMBER</div>
+                        <div class="card-info-grid">
+                            <div class="card-info-item">
+                                <div class="card-info-label">THREAT LEVEL</div>
+                                <div class="card-info-value">MODERATE</div>
+                            </div>
+                            <div class="card-info-item">
+                                <div class="card-info-label">ACTIVITY</div>
+                                <div class="card-info-value">MODERATE</div>
+                            </div>
+                        </div>
+                        <div class="card-known-for">
+                            Known for: Consistent participation, reliable presence
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-incidents">3 INCIDENTS</div>
+                            <div class="card-status active">ACTIVE</div>
+                        </div>
+                    </a>
+
+                    <a href="subject-005.html" class="subject-card" data-classification="alpha">
+                        <div class="card-header">
+                            <div class="card-id">TWF-005</div>
+                            <div class="card-classification alpha">ALPHA</div>
+                        </div>
+                        <div class="card-name">QUIET OBSERVER</div>
+                        <div class="card-info-grid">
+                            <div class="card-info-item">
+                                <div class="card-info-label">THREAT LEVEL</div>
+                                <div class="card-info-value">MINIMAL</div>
+                            </div>
+                            <div class="card-info-item">
+                                <div class="card-info-label">ACTIVITY</div>
+                                <div class="card-info-value">LOW</div>
+                            </div>
+                        </div>
+                        <div class="card-known-for">
+                            Known for: Lurking tendencies, minimal interaction
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-incidents">1 INCIDENT</div>
+                            <div class="card-status active">ACTIVE</div>
+                        </div>
+                    </a>
+
+                    <a href="subject-006.html" class="subject-card" data-classification="beta">
+                        <div class="card-header">
+                            <div class="card-id">TWF-006</div>
+                            <div class="card-classification beta">BETA</div>
+                        </div>
+                        <div class="card-name">CASUAL CHATTER</div>
+                        <div class="card-info-grid">
+                            <div class="card-info-item">
+                                <div class="card-info-label">THREAT LEVEL</div>
+                                <div class="card-info-value">MODERATE</div>
+                            </div>
+                            <div class="card-info-item">
+                                <div class="card-info-label">ACTIVITY</div>
+                                <div class="card-info-value">MODERATE</div>
+                            </div>
+                        </div>
+                        <div class="card-known-for">
+                            Known for: Voice channel activity, casual conversations
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-incidents">4 INCIDENTS</div>
+                            <div class="card-status active">ACTIVE</div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- No Results Message -->
+                <div class="no-results" id="noResults" style="display: none;">
+                    <div class="no-results-icon">⚠</div>
+                    <div class="no-results-title">NO SUBJECTS FOUND</div>
+                    <div class="no-results-text">
+                        No subjects match the current search and filter criteria. 
+                        Please adjust your parameters and try again.
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Bottom Classification Banner -->
+    <div class="classification-banner bottom">PUBLIC INFORMATION // FROM THE WORD OF MAN</div>
+
+    <script src="script.js"></script>
 </body>
 </html>
