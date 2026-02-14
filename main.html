@@ -3,165 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE WURZ FILES // CLASSIFIED DATABASE</title>
+    <title>The Wurz Files - Intelligence Database</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Classification Banner -->
-    <div class="classification-banner top">PUBLIC INFORMATION // FROM THE WORD OF MAN</div>
-    
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <button class="sidebar-toggle" id="sidebarToggle">☰</button>
-        <div class="top-bar-title">THE WURZ FILES</div>
+    <!-- Top Navigation Bar -->
+    <div class="top-nav">
+        <div class="menu-icon" id="menuIcon">☰</div>
+        <div class="top-title">THE WURZ FILES</div>
     </div>
+
+    <!-- Overlay for mobile -->
+    <div class="overlay" id="overlay"></div>
 
     <!-- Sidebar Navigation -->
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <div class="sidebar-logo">█ TWF</div>
-            <div class="sidebar-subtitle">CLASSIFIED DATABASE</div>
+            <h1>THE WURZ FILES</h1>
+            <p class="subtitle">CLASSIFIED INTELLIGENCE</p>
         </div>
         <ul class="nav-menu">
-            <li><a href="main.html" class="active">MAIN DATABASE</a></li>
-            <li><a href="subjects.html">SUBJECT FILES</a></li>
-            <li><a href="#">INCIDENT REPORTS</a></li>
-            <li><a href="#">ARCHIVE ACCESS</a></li>
+            <li><a href="main.html" class="active">DATABASE OVERVIEW</a></li>
+            <li><a href="subjects.html">SUBJECT REGISTRY</a></li>
         </ul>
         <div class="sidebar-footer">
-            <div class="access-level">ACCESS LEVEL: PUBLIC</div>
-            <div class="timestamp" id="timestamp"></div>
+            <p>CLASSIFICATION</p>
+            <p class="classification-text">PUBLIC INFORMATION<br>FROM THE WORD OF MAN</p>
         </div>
     </nav>
 
-    <!-- Overlay for mobile sidebar -->
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
     <!-- Main Content -->
     <main class="main-content">
-        <div class="content-wrapper">
-            <!-- Header Section -->
-            <section class="section">
-                <div class="section-header">
-                    <div class="file-number">FILE: TWF-MAIN-001</div>
-                    <h1 class="page-title">THE WURZ FILES</h1>
-                    <div class="subtitle">COMPREHENSIVE DATABASE OF DISCORD SERVER PERSONNEL</div>
-                </div>
-                
-                <div class="info-box">
-                    <div class="info-box-header">SYSTEM OVERVIEW</div>
-                    <div class="info-box-content">
-                        <p>The Wurz Files represents a comprehensive intelligence gathering and documentation system 
-                        designed to catalog, analyze, and monitor all personnel within the designated Discord server 
-                        environment. This database maintains detailed profiles, behavioral analyses, and incident 
-                        reports for all active and inactive subjects.</p>
-                        
-                        <p>All information contained within this system is derived from publicly available Discord 
-                        interactions, voice channel activities, and message history. No classified or sensitive 
-                        information is stored or processed.</p>
-                    </div>
-                </div>
-            </section>
+        <header class="page-header">
+            <h1>DATABASE OVERVIEW</h1>
+            <p class="classification-banner">PUBLIC INFORMATION // FROM THE WORD OF MAN</p>
+        </header>
 
-            <!-- Classification Levels -->
-            <section class="section">
-                <h2 class="section-title">CLASSIFICATION LEVELS</h2>
-                
-                <div class="classification-grid">
-                    <div class="classification-card alpha">
-                        <div class="classification-label">ALPHA</div>
-                        <div class="classification-desc">Minimal threat assessment. Standard server member. 
-                        Low activity monitoring required.</div>
-                    </div>
-                    
-                    <div class="classification-card beta">
-                        <div class="classification-label">BETA</div>
-                        <div class="classification-desc">Moderate engagement. Notable behavioral patterns. 
-                        Periodic surveillance recommended.</div>
-                    </div>
-                    
-                    <div class="classification-card gamma">
-                        <div class="classification-label">GAMMA</div>
-                        <div class="classification-desc">High activity subject. Significant server influence. 
-                        Regular monitoring protocols in effect.</div>
-                    </div>
-                    
-                    <div class="classification-card omega">
-                        <div class="classification-label">OMEGA</div>
-                        <div class="classification-desc">Maximum threat designation. Extreme chaos potential. 
-                        Continuous surveillance mandatory.</div>
-                    </div>
-                    
-                    <div class="classification-card sigma">
-                        <div class="classification-label">SIGMA</div>
-                        <div class="classification-desc">Unpredictable behavior patterns. Operates outside 
-                        standard parameters. Enhanced tracking active.</div>
-                    </div>
+        <!-- Database Overview Section -->
+        <section class="content-box">
+            <h2>SYSTEM STATUS</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="label">SYSTEM:</span>
+                    <span class="value">OPERATIONAL</span>
                 </div>
-            </section>
+                <div class="info-item">
+                    <span class="label">ACCESS LEVEL:</span>
+                    <span class="value">UNRESTRICTED</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">LAST UPDATE:</span>
+                    <span class="value">2025-02-14</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">FILE NUMBER:</span>
+                    <span class="value">WURZ-2025-001</span>
+                </div>
+            </div>
+        </section>
 
-            <!-- Database Sections -->
-            <section class="section">
-                <h2 class="section-title">DATABASE SECTIONS</h2>
-                
-                <div class="database-sections">
-                    <div class="db-section">
-                        <div class="db-section-number">01</div>
-                        <div class="db-section-title">SUBJECT FILES</div>
-                        <div class="db-section-desc">
-                            Comprehensive dossiers on all monitored individuals. Includes biographical data, 
-                            behavioral analysis, activity logs, and threat assessments. Access requires Level 1 
-                            clearance or higher.
-                        </div>
-                        <a href="subjects.html" class="db-section-link">ACCESS FILES →</a>
-                    </div>
-                    
-                    <div class="db-section">
-                        <div class="db-section-number">02</div>
-                        <div class="db-section-title">INCIDENT REPORTS</div>
-                        <div class="db-section-desc">
-                            Chronological documentation of notable events, conflicts, and occurrences within the 
-                            server environment. Cross-referenced with subject files for pattern analysis.
-                        </div>
-                        <div class="db-section-link disabled">COMING SOON →</div>
-                    </div>
-                    
-                    <div class="db-section">
-                        <div class="db-section-number">03</div>
-                        <div class="db-section-title">ARCHIVE ACCESS</div>
-                        <div class="db-section-desc">
-                            Historical records of former members, concluded incidents, and outdated intelligence. 
-                            Maintained for reference and pattern recognition purposes.
-                        </div>
-                        <div class="db-section-link disabled">COMING SOON →</div>
-                    </div>
+        <!-- Classification Tier System -->
+        <section class="content-box">
+            <h2>CLASSIFICATION TIER SYSTEM</h2>
+            <div class="tier-list">
+                <div class="tier-item">
+                    <h3>ALPHA TIER</h3>
+                    <p>Highest priority subjects. Extensive documentation and continuous monitoring required. Significant impact on community operations.</p>
                 </div>
-            </section>
+                <div class="tier-item">
+                    <h3>BETA TIER</h3>
+                    <p>High-value subjects with notable influence. Regular monitoring and comprehensive incident logging maintained.</p>
+                </div>
+                <div class="tier-item">
+                    <h3>GAMMA TIER</h3>
+                    <p>Standard classification. Routine monitoring protocols. Moderate community engagement and influence.</p>
+                </div>
+                <div class="tier-item">
+                    <h3>OMEGA TIER</h3>
+                    <p>Low-priority subjects. Minimal monitoring required. Limited community interaction or influence detected.</p>
+                </div>
+                <div class="tier-item">
+                    <h3>SIGMA TIER</h3>
+                    <p>Special classification for subjects operating outside standard parameters. Independent operatives requiring unique assessment protocols.</p>
+                </div>
+            </div>
+        </section>
 
-            <!-- Disclaimer -->
-            <section class="section">
-                <div class="disclaimer-box">
-                    <div class="disclaimer-header">⚠ DISCLAIMER</div>
-                    <div class="disclaimer-content">
-                        <p>THE WURZ FILES is a satirical project created for entertainment purposes within a 
-                        private Discord server community. All "classifications", "threat levels", and "intelligence 
-                        reports" are entirely fictional and humorous in nature.</p>
-                        
-                        <p>No actual surveillance, monitoring, or intelligence gathering is conducted. All content 
-                        is based on public Discord interactions and is created with the knowledge and consent of 
-                        all involved parties.</p>
-                        
-                        <p>This website is not affiliated with any government agency, intelligence organization, 
-                        or law enforcement entity. Any resemblance to actual classified documents is purely 
-                        coincidental and intended for comedic effect.</p>
-                    </div>
-                </div>
-            </section>
-        </div>
+        <!-- Subject Registry Summary -->
+        <section class="content-box">
+            <h2>SUBJECT REGISTRY</h2>
+            <p>The Subject Registry contains comprehensive dossiers on all indexed community members. Each profile includes threat assessment, behavioral analysis, incident history, and operational status.</p>
+            <p class="access-note">ACCESS: Navigate to Subject Registry to search and view detailed profiles.</p>
+        </section>
+
+        <!-- Incident Reports Summary -->
+        <section class="content-box">
+            <h2>INCIDENT REPORTS</h2>
+            <p>All documented incidents are logged chronologically within individual subject profiles. Incident reports include timestamps, severity classifications, and detailed descriptions of notable activities.</p>
+            <p class="access-note">ACCESS: Incident logs available within individual subject dossiers.</p>
+        </section>
+
+        <!-- Archives Summary -->
+        <section class="content-box">
+            <h2>ARCHIVES</h2>
+            <p>Historical data and archived profiles maintained for reference purposes. Classified materials and redacted information stored under restricted access protocols.</p>
+            <p class="access-note">ACCESS: Archive retrieval available on request basis only.</p>
+        </section>
+
+        <!-- Legal Disclaimer -->
+        <section class="content-box disclaimer">
+            <h2>LEGAL DISCLAIMER</h2>
+            <p><strong>NOTICE:</strong> The Wurz Files is a satirical project created for entertainment purposes within a private Discord community. All content is fictional and intended as humorous commentary on community members.</p>
+            <p>This database does not represent actual intelligence gathering, surveillance, or government operations. No real threat assessments, classifications, or monitoring activities are conducted.</p>
+            <p>All subjects have consented to their inclusion. Content should not be taken seriously or interpreted as factual documentation.</p>
+        </section>
     </main>
-
-    <!-- Bottom Classification Banner -->
-    <div class="classification-banner bottom">PUBLIC INFORMATION // FROM THE WORD OF MAN</div>
 
     <script src="script.js"></script>
 </body>

@@ -3,260 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUBJECT FILE // THE WURZ FILES</title>
+    <title>Subject Alpha One - The Wurz Files</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Classification Banner -->
-    <div class="classification-banner top">PUBLIC INFORMATION // FROM THE WORD OF MAN</div>
-    
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <button class="sidebar-toggle" id="sidebarToggle">☰</button>
-        <div class="top-bar-title">THE WURZ FILES</div>
+    <!-- Top Navigation Bar -->
+    <div class="top-nav">
+        <div class="menu-icon" id="menuIcon">☰</div>
+        <div class="top-title">THE WURZ FILES</div>
     </div>
+
+    <!-- Overlay for mobile -->
+    <div class="overlay" id="overlay"></div>
 
     <!-- Sidebar Navigation -->
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <div class="sidebar-logo">█ TWF</div>
-            <div class="sidebar-subtitle">CLASSIFIED DATABASE</div>
+            <h1>THE WURZ FILES</h1>
+            <p class="subtitle">CLASSIFIED INTELLIGENCE</p>
         </div>
         <ul class="nav-menu">
-            <li><a href="main.html">MAIN DATABASE</a></li>
-            <li><a href="subjects.html" class="active">SUBJECT FILES</a></li>
-            <li><a href="#">INCIDENT REPORTS</a></li>
-            <li><a href="#">ARCHIVE ACCESS</a></li>
+            <li><a href="main.html">DATABASE OVERVIEW</a></li>
+            <li><a href="subjects.html">SUBJECT REGISTRY</a></li>
         </ul>
         <div class="sidebar-footer">
-            <div class="access-level">ACCESS LEVEL: PUBLIC</div>
-            <div class="timestamp" id="timestamp"></div>
+            <p>CLASSIFICATION</p>
+            <p class="classification-text">PUBLIC INFORMATION<br>FROM THE WORD OF MAN</p>
         </div>
     </nav>
 
-    <!-- Overlay for mobile sidebar -->
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
     <!-- Main Content -->
     <main class="main-content">
-        <div class="content-wrapper">
-            <!-- Back Button -->
-            <div class="back-button-container">
-                <a href="subjects.html" class="back-button">← RETURN TO SUBJECT FILES</a>
+        <header class="page-header">
+            <h1>SUBJECT DOSSIER</h1>
+            <p class="classification-banner">PUBLIC INFORMATION // FROM THE WORD OF MAN</p>
+        </header>
+
+        <!-- Return Navigation -->
+        <div class="return-nav">
+            <a href="subjects.html">← RETURN TO SUBJECT REGISTRY</a>
+        </div>
+
+        <!-- Subject Header -->
+        <section class="content-box subject-header">
+            <h2>SUBJECT ALPHA ONE</h2>
+            <p class="file-designation">FILE ID: WURZ-001</p>
+        </section>
+
+        <!-- Basic Information Grid -->
+        <section class="content-box">
+            <h2>BASIC INFORMATION</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="label">DESIGNATION:</span>
+                    <span class="value">Subject Alpha One</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">FILE NUMBER:</span>
+                    <span class="value">WURZ-001</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">CLASSIFICATION:</span>
+                    <span class="value tier-alpha">ALPHA TIER</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">THREAT LEVEL:</span>
+                    <span class="value">HIGH</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">DISCORD TAG:</span>
+                    <span class="value">AlphaUser#0001</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">JOIN DATE:</span>
+                    <span class="value">2024-01-15</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">LAST ACTIVITY:</span>
+                    <span class="value">2025-02-13</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">STATUS:</span>
+                    <span class="value status-active">ACTIVE</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">TOTAL INCIDENTS:</span>
+                    <span class="value">47</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">MONITORING LEVEL:</span>
+                    <span class="value">CONTINUOUS</span>
+                </div>
             </div>
+        </section>
 
-            <!-- Header Section -->
-            <section class="section">
-                <div class="profile-header">
-                    <div class="profile-header-top">
-                        <div>
-                            <div class="file-number">FILE: TWF-001</div>
-                            <h1 class="profile-name">SUBJECT NAME</h1>
-                        </div>
-                        <div class="profile-classification omega">OMEGA</div>
-                    </div>
-                    <div class="profile-subtitle">MAXIMUM THREAT DESIGNATION</div>
-                </div>
-            </section>
+        <!-- Subject Profile Summary -->
+        <section class="content-box">
+            <h2>SUBJECT PROFILE</h2>
+            <p><strong>PRIMARY ACTIVITIES:</strong> Extreme shitposting, chaos coordination, meme warfare operations</p>
+            <p><strong>KNOWN FOR:</strong> Subject demonstrates exceptional ability to derail serious conversations and coordinate simultaneous multi-channel disruption events. Frequent instigator of spontaneous voice channel raids.</p>
+            <p><strong>COMMUNITY ROLE:</strong> Self-appointed "Minister of Chaos" - unofficial leadership role in organizing community events, particularly those involving questionable judgment and maximum entertainment value.</p>
+            <p><strong>NOTABLE CHARACTERISTICS:</strong> Extremely high message frequency (avg. 200+ messages/day), tendency to post at unusual hours (2-4 AM local time), extensive custom emoji usage, suspected multiple alt accounts.</p>
+        </section>
 
-            <!-- Basic Information Grid -->
-            <section class="section">
-                <h2 class="section-title">BASIC INFORMATION</h2>
-                
-                <div class="info-grid">
-                    <div class="info-grid-item">
-                        <div class="info-grid-label">FILE ID</div>
-                        <div class="info-grid-value">TWF-001</div>
-                    </div>
-                    <div class="info-grid-item">
-                        <div class="info-grid-label">DISCORD USERNAME</div>
-                        <div class="info-grid-value">username#0000</div>
-                    </div>
-                    <div class="info-grid-item">
-                        <div class="info-grid-label">CLASSIFICATION</div>
-                        <div class="info-grid-value">OMEGA</div>
-                    </div>
-                    <div class="info-grid-item">
-                        <div class="info-grid-label">THREAT LEVEL</div>
-                        <div class="info-grid-value">MAXIMUM</div>
-                    </div>
-                    <div class="info-grid-item">
-                        <div class="info-grid-label">ACTIVITY LEVEL</div>
-                        <div class="info-grid-value">CONSTANT</div>
-                    </div>
-                    <div class="info-grid-item">
-                        <div class="info-grid-label">STATUS</div>
-                        <div class="info-grid-value">ACTIVE</div>
-                    </div>
-                    <div class="info-grid-item">
-                        <div class="info-grid-label">FIRST OBSERVED</div>
-                        <div class="info-grid-value">2024-01-15</div>
-                    </div>
-                    <div class="info-grid-item">
-                        <div class="info-grid-label">INCIDENT COUNT</div>
-                        <div class="info-grid-value">12</div>
-                    </div>
-                </div>
-            </section>
+        <!-- Behavioral Analysis -->
+        <section class="content-box">
+            <h2>BEHAVIORAL ANALYSIS</h2>
+            <p><strong>COMMUNICATION STYLE:</strong> Rapid-fire messages with heavy emphasis on reaction image deployment. Frequently employs irony, sarcasm, and multiple layers of meta-commentary. Communication patterns suggest high caffeine intake and/or insomnia.</p>
+            <p><strong>SOCIAL DYNAMICS:</strong> Acts as social catalyst within server. Capable of unifying disparate community members through shared absurdist humor. Demonstrates strong emotional intelligence despite chaotic presentation.</p>
+            <p><strong>INFLUENCE LEVEL:</strong> HIGH - Subject's activities regularly set tone for server-wide engagement patterns. Other members frequently adopt subject's terminology and communication style.</p>
+            <p><strong>PSYCHOLOGICAL PROFILE:</strong> Extroverted personality with strong need for social engagement and validation. Uses humor as primary bonding mechanism. Despite chaotic behavior, demonstrates genuine care for community wellbeing.</p>
+            <p><strong>RISK ASSESSMENT:</strong> While subject presents high "threat level" in terms of disruption potential, actual risk to community cohesion is minimal. Chaos appears constructive rather than destructive. Monitor for burnout indicators.</p>
+        </section>
 
-            <!-- Profile Summary -->
-            <section class="section">
-                <h2 class="section-title">PROFILE SUMMARY</h2>
-                
-                <div class="profile-box">
-                    <p>Subject TWF-001 represents the highest level of chaos potential within the Discord 
-                    server environment. Initial observations date back to January 2024, with immediate 
-                    classification as high-priority monitoring target.</p>
-                    
-                    <p>Primary characteristics include unpredictable behavioral patterns, significant 
-                    influence over server dynamics, and demonstrated ability to orchestrate large-scale 
-                    disruptions with minimal warning. Subject maintains constant presence across multiple 
-                    channels and voice communications.</p>
-                    
-                    <p>Known for exceptional meme generation capabilities, spontaneous voice channel 
-                    takeovers, and coordination of group activities. Subject demonstrates leadership 
-                    qualities while simultaneously exhibiting chaotic tendencies that defy standard 
-                    categorization protocols.</p>
+        <!-- Chronological Incident Log -->
+        <section class="content-box">
+            <h2>INCIDENT LOG</h2>
+            <div class="incident-log">
+                <div class="incident-entry">
+                    <div class="incident-header">
+                        <span class="incident-date">2025-02-13 02:34 AM</span>
+                        <span class="incident-severity severity-high">HIGH SEVERITY</span>
+                    </div>
+                    <p class="incident-description"><strong>INCIDENT:</strong> Coordinated 3 AM meme raid involving 12 participants across 4 channels simultaneously. Server activity increased 400% for 2-hour duration. Multiple users reported inability to sleep due to notification overload.</p>
                 </div>
-            </section>
 
-            <!-- Behavioral Analysis -->
-            <section class="section">
-                <h2 class="section-title">BEHAVIORAL ANALYSIS</h2>
-                
-                <div class="analysis-grid">
-                    <div class="analysis-item">
-                        <div class="analysis-header">
-                            <div class="analysis-title">COMMUNICATION PATTERNS</div>
-                            <div class="analysis-rating high">HIGH</div>
-                        </div>
-                        <div class="analysis-content">
-                            Extremely active across all text channels with consistent daily engagement. 
-                            Demonstrates sophisticated understanding of server culture and in-jokes. 
-                            Frequently initiates conversations and maintains multiple concurrent discussions.
-                        </div>
+                <div class="incident-entry">
+                    <div class="incident-header">
+                        <span class="incident-date">2025-02-10 08:15 PM</span>
+                        <span class="incident-severity severity-moderate">MODERATE</span>
                     </div>
-                    
-                    <div class="analysis-item">
-                        <div class="analysis-header">
-                            <div class="analysis-title">VOICE CHANNEL ACTIVITY</div>
-                            <div class="analysis-rating high">HIGH</div>
-                        </div>
-                        <div class="analysis-content">
-                            Regular voice channel participant with extended session durations. Often acts 
-                            as de facto moderator of voice conversations. Known for spontaneous gaming 
-                            sessions and collaborative activities.
-                        </div>
-                    </div>
-                    
-                    <div class="analysis-item">
-                        <div class="analysis-header">
-                            <div class="analysis-title">SOCIAL INFLUENCE</div>
-                            <div class="analysis-rating maximum">MAXIMUM</div>
-                        </div>
-                        <div class="analysis-content">
-                            Commands significant respect and attention from other server members. Capable 
-                            of mobilizing groups for coordinated activities. Suggestions and opinions carry 
-                            substantial weight within community decision-making processes.
-                        </div>
-                    </div>
-                    
-                    <div class="analysis-item">
-                        <div class="analysis-header">
-                            <div class="analysis-title">CHAOS POTENTIAL</div>
-                            <div class="analysis-rating maximum">MAXIMUM</div>
-                        </div>
-                        <div class="analysis-content">
-                            Demonstrates exceptional ability to generate controlled chaos within server 
-                            environment. Frequently initiates unplanned events, challenges, and humorous 
-                            disruptions. Maintains balance between entertainment and community cohesion.
-                        </div>
-                    </div>
+                    <p class="incident-description"><strong>INCIDENT:</strong> Initiated impromptu voice channel karaoke session. 23 participants. Session lasted 4 hours. Neighbors reportedly filed noise complaints for 3 separate households.</p>
                 </div>
-            </section>
 
-            <!-- Notable Incidents -->
-            <section class="section">
-                <h2 class="section-title">NOTABLE INCIDENTS</h2>
-                
-                <div class="incidents-log">
-                    <div class="incident-entry">
-                        <div class="incident-header">
-                            <div class="incident-id">INC-001-A</div>
-                            <div class="incident-date">2024-02-03</div>
-                        </div>
-                        <div class="incident-title">The Great Emoji Flood</div>
-                        <div class="incident-description">
-                            Subject orchestrated coordinated emoji response campaign resulting in 500+ 
-                            reactions on single message. Event required temporary emoji slowmode implementation. 
-                            No lasting damage to server operations.
-                        </div>
+                <div class="incident-entry">
+                    <div class="incident-header">
+                        <span class="incident-date">2025-02-07 11:47 PM</span>
+                        <span class="incident-severity severity-high">HIGH SEVERITY</span>
                     </div>
-                    
-                    <div class="incident-entry">
-                        <div class="incident-header">
-                            <div class="incident-id">INC-001-B</div>
-                            <div class="incident-date">2024-03-15</div>
-                        </div>
-                        <div class="incident-title">Midnight Voice Channel Takeover</div>
-                        <div class="incident-description">
-                            Subject led spontaneous 3 AM voice channel gaming session attracting 12+ 
-                            participants. Event lasted 6 hours and resulted in significant next-day 
-                            productivity losses among participant group.
-                        </div>
-                    </div>
-                    
-                    <div class="incident-entry">
-                        <div class="incident-header">
-                            <div class="incident-id">INC-001-C</div>
-                            <div class="incident-date">2024-04-22</div>
-                        </div>
-                        <div class="incident-title">Meme Template Revolution</div>
-                        <div class="incident-description">
-                            Introduction of new meme format by subject resulted in 48-hour period of 
-                            continuous meme production across all channels. Format achieved widespread 
-                            adoption and remains in active circulation.
-                        </div>
-                    </div>
+                    <p class="incident-description"><strong>INCIDENT:</strong> Created and deployed 47 custom emoji reactions within 24-hour period. Server emoji slots temporarily exhausted. Mod intervention required to restore normal operations.</p>
                 </div>
-                
-                <div class="add-incident-note">
-                    [ADDITIONAL INCIDENTS CAN BE ADDED HERE]
-                </div>
-            </section>
 
-            <!-- Classified Notes -->
-            <section class="section">
-                <h2 class="section-title">CLASSIFIED NOTES</h2>
-                
-                <div class="classified-box">
-                    <div class="classified-header">⚠ INTERNAL OBSERVATION NOTES</div>
-                    <div class="classified-content">
-                        <p><strong>ANALYST COMMENTS:</strong> Subject displays remarkable ability to maintain 
-                        server engagement and morale. Despite chaos classification, actions generally result 
-                        in positive community outcomes. Recommend continued monitoring but no intervention 
-                        required at this time.</p>
-                        
-                        <p><strong>PSYCHOLOGICAL PROFILE:</strong> High energy individual with strong social 
-                        skills and natural leadership tendencies. Thrives in group settings and demonstrates 
-                        genuine care for community wellbeing beneath chaotic exterior.</p>
-                        
-                        <p><strong>RECOMMENDATION:</strong> Maintain current classification. Subject poses 
-                        no actual threat to server stability. Chaos designation reflects entertainment value 
-                        and community engagement rather than destructive potential.</p>
+                <div class="incident-entry">
+                    <div class="incident-header">
+                        <span class="incident-date">2025-02-03 06:23 PM</span>
+                        <span class="incident-severity severity-low">LOW SEVERITY</span>
                     </div>
+                    <p class="incident-description"><strong>INCIDENT:</strong> Posted 200+ messages in general chat within single hour discussing conspiracy theories about server moderators being replaced by AI. Resulted in philosophical debate about consciousness and identity.</p>
                 </div>
-            </section>
 
-            <!-- Back Button Bottom -->
-            <div class="back-button-container">
-                <a href="subjects.html" class="back-button">← RETURN TO SUBJECT FILES</a>
+                <div class="incident-entry">
+                    <div class="incident-header">
+                        <span class="incident-date">2025-01-28 03:15 AM</span>
+                        <span class="incident-severity severity-moderate">MODERATE</span>
+                    </div>
+                    <p class="incident-description"><strong>INCIDENT:</strong> Organized surprise birthday celebration for community member. Coordinated 30+ participants across 3 time zones. Event considered heartwarming but logistically chaotic.</p>
+                </div>
+
+                <div class="incident-entry">
+                    <div class="incident-header">
+                        <span class="incident-date">2025-01-20 09:42 PM</span>
+                        <span class="incident-severity severity-high">HIGH SEVERITY</span>
+                    </div>
+                    <p class="incident-description"><strong>INCIDENT:</strong> Initiated "cursed images" sharing spree that resulted in temporary channel quarantine. 156 images flagged for review. Psychological support offered to affected viewers.</p>
+                </div>
             </div>
+        </section>
+
+        <!-- Classified Notes -->
+        <section class="content-box classified-notes">
+            <h2>CLASSIFIED NOTES</h2>
+            <p class="redacted">[REDACTED] - Information regarding subject's real-world identity and personal details withheld per privacy protocols.</p>
+            <p class="redacted">[REDACTED] - Internal moderator discussions and disciplinary considerations classified.</p>
+            <p class="redacted">[REDACTED] - Subject's suspected alt accounts under investigation. Details withheld pending confirmation.</p>
+            <p><strong>HANDLER NOTES:</strong> Subject remains valuable community asset despite high maintenance requirements. Recommend continued engagement with light supervision. Do not attempt to suppress natural behavior - has historically resulted in increased chaos.</p>
+            <p><strong>MONITORING RECOMMENDATIONS:</strong> Continue standard observation protocols. Flag any signs of genuine distress beneath humorous facade. Subject uses humor as coping mechanism - sudden behavioral changes may indicate personal issues requiring support.</p>
+        </section>
+
+        <!-- Return Navigation Bottom -->
+        <div class="return-nav">
+            <a href="subjects.html">← RETURN TO SUBJECT REGISTRY</a>
         </div>
     </main>
-
-    <!-- Bottom Classification Banner -->
-    <div class="classification-banner bottom">PUBLIC INFORMATION // FROM THE WORD OF MAN</div>
 
     <script src="script.js"></script>
 </body>

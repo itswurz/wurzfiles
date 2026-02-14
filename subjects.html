@@ -3,250 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUBJECT FILES // THE WURZ FILES</title>
+    <title>Subject Registry - The Wurz Files</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Classification Banner -->
-    <div class="classification-banner top">PUBLIC INFORMATION // FROM THE WORD OF MAN</div>
-    
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <button class="sidebar-toggle" id="sidebarToggle">☰</button>
-        <div class="top-bar-title">THE WURZ FILES</div>
+    <!-- Top Navigation Bar -->
+    <div class="top-nav">
+        <div class="menu-icon" id="menuIcon">☰</div>
+        <div class="top-title">THE WURZ FILES</div>
     </div>
+
+    <!-- Overlay for mobile -->
+    <div class="overlay" id="overlay"></div>
 
     <!-- Sidebar Navigation -->
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <div class="sidebar-logo">█ TWF</div>
-            <div class="sidebar-subtitle">CLASSIFIED DATABASE</div>
+            <h1>THE WURZ FILES</h1>
+            <p class="subtitle">CLASSIFIED INTELLIGENCE</p>
         </div>
         <ul class="nav-menu">
-            <li><a href="main.html">MAIN DATABASE</a></li>
-            <li><a href="subjects.html" class="active">SUBJECT FILES</a></li>
-            <li><a href="#">INCIDENT REPORTS</a></li>
-            <li><a href="#">ARCHIVE ACCESS</a></li>
+            <li><a href="main.html">DATABASE OVERVIEW</a></li>
+            <li><a href="subjects.html" class="active">SUBJECT REGISTRY</a></li>
         </ul>
         <div class="sidebar-footer">
-            <div class="access-level">ACCESS LEVEL: PUBLIC</div>
-            <div class="timestamp" id="timestamp"></div>
+            <p>CLASSIFICATION</p>
+            <p class="classification-text">PUBLIC INFORMATION<br>FROM THE WORD OF MAN</p>
         </div>
     </nav>
 
-    <!-- Overlay for mobile sidebar -->
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
     <!-- Main Content -->
     <main class="main-content">
-        <div class="content-wrapper">
-            <!-- Header Section -->
-            <section class="section">
-                <div class="section-header">
-                    <div class="file-number">FILE: TWF-SUBJ-ALL</div>
-                    <h1 class="page-title">SUBJECT FILES</h1>
-                    <div class="subtitle">ACTIVE PERSONNEL DATABASE</div>
-                </div>
-            </section>
+        <header class="page-header">
+            <h1>SUBJECT REGISTRY</h1>
+            <p class="classification-banner">PUBLIC INFORMATION // FROM THE WORD OF MAN</p>
+        </header>
 
-            <!-- Search and Filter Controls -->
-            <section class="section">
-                <div class="controls-container">
-                    <div class="search-box">
-                        <input 
-                            type="text" 
-                            id="searchInput" 
-                            class="search-input" 
-                            placeholder="SEARCH BY NAME OR FILE ID..."
-                        >
+        <!-- Search and Filter Controls -->
+        <section class="search-controls">
+            <div class="search-box">
+                <label for="searchInput">SEARCH DATABASE:</label>
+                <input type="text" id="searchInput" placeholder="Enter subject name or designation...">
+            </div>
+            <div class="filter-box">
+                <label>CLASSIFICATION FILTER:</label>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">ALL</button>
+                    <button class="filter-btn" data-filter="alpha">ALPHA</button>
+                    <button class="filter-btn" data-filter="beta">BETA</button>
+                    <button class="filter-btn" data-filter="gamma">GAMMA</button>
+                    <button class="filter-btn" data-filter="sigma">SIGMA</button>
+                    <button class="filter-btn" data-filter="omega">OMEGA</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Subject Cards Container -->
+        <section class="subjects-container" id="subjectsContainer">
+            <!-- Sample Subject Cards -->
+            <a href="subject-001.html" class="subject-card" data-classification="alpha" data-name="Subject Alpha One" data-designation="WURZ-001">
+                <div class="card-header">
+                    <h3>SUBJECT ALPHA ONE</h3>
+                    <span class="file-id">FILE: WURZ-001</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-row">
+                        <span class="card-label">CLASSIFICATION:</span>
+                        <span class="card-value tier-alpha">ALPHA TIER</span>
                     </div>
-                    
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" data-filter="all">ALL</button>
-                        <button class="filter-btn" data-filter="alpha">ALPHA</button>
-                        <button class="filter-btn" data-filter="beta">BETA</button>
-                        <button class="filter-btn" data-filter="gamma">GAMMA</button>
-                        <button class="filter-btn" data-filter="sigma">SIGMA</button>
-                        <button class="filter-btn" data-filter="omega">OMEGA</button>
+                    <div class="card-row">
+                        <span class="card-label">THREAT LEVEL:</span>
+                        <span class="card-value">HIGH</span>
                     </div>
-                </div>
-            </section>
-
-            <!-- Subjects Grid -->
-            <section class="section">
-                <div class="subjects-count">
-                    DISPLAYING <span id="displayCount">6</span> OF <span id="totalCount">6</span> SUBJECTS
-                </div>
-                
-                <div class="subjects-grid" id="subjectsGrid">
-                    <!-- Example Subject Cards - Replace with actual data -->
-                    
-                    <a href="subject-001.html" class="subject-card" data-classification="omega">
-                        <div class="card-header">
-                            <div class="card-id">TWF-001</div>
-                            <div class="card-classification omega">OMEGA</div>
-                        </div>
-                        <div class="card-name">SUBJECT NAME</div>
-                        <div class="card-info-grid">
-                            <div class="card-info-item">
-                                <div class="card-info-label">THREAT LEVEL</div>
-                                <div class="card-info-value">MAXIMUM</div>
-                            </div>
-                            <div class="card-info-item">
-                                <div class="card-info-label">ACTIVITY</div>
-                                <div class="card-info-value">CONSTANT</div>
-                            </div>
-                        </div>
-                        <div class="card-known-for">
-                            Known for: Chaos creation, unpredictable behavior patterns
-                        </div>
-                        <div class="card-footer">
-                            <div class="card-incidents">12 INCIDENTS</div>
-                            <div class="card-status active">ACTIVE</div>
-                        </div>
-                    </a>
-
-                    <a href="subject-002.html" class="subject-card" data-classification="gamma">
-                        <div class="card-header">
-                            <div class="card-id">TWF-002</div>
-                            <div class="card-classification gamma">GAMMA</div>
-                        </div>
-                        <div class="card-name">ANOTHER SUBJECT</div>
-                        <div class="card-info-grid">
-                            <div class="card-info-item">
-                                <div class="card-info-label">THREAT LEVEL</div>
-                                <div class="card-info-value">ELEVATED</div>
-                            </div>
-                            <div class="card-info-item">
-                                <div class="card-info-label">ACTIVITY</div>
-                                <div class="card-info-value">HIGH</div>
-                            </div>
-                        </div>
-                        <div class="card-known-for">
-                            Known for: High engagement, community leadership
-                        </div>
-                        <div class="card-footer">
-                            <div class="card-incidents">8 INCIDENTS</div>
-                            <div class="card-status active">ACTIVE</div>
-                        </div>
-                    </a>
-
-                    <a href="subject-003.html" class="subject-card" data-classification="sigma">
-                        <div class="card-header">
-                            <div class="card-id">TWF-003</div>
-                            <div class="card-classification sigma">SIGMA</div>
-                        </div>
-                        <div class="card-name">MYSTERIOUS ONE</div>
-                        <div class="card-info-grid">
-                            <div class="card-info-item">
-                                <div class="card-info-label">THREAT LEVEL</div>
-                                <div class="card-info-value">UNKNOWN</div>
-                            </div>
-                            <div class="card-info-item">
-                                <div class="card-info-label">ACTIVITY</div>
-                                <div class="card-info-value">SPORADIC</div>
-                            </div>
-                        </div>
-                        <div class="card-known-for">
-                            Known for: Unpredictable presence, enigmatic behavior
-                        </div>
-                        <div class="card-footer">
-                            <div class="card-incidents">5 INCIDENTS</div>
-                            <div class="card-status active">ACTIVE</div>
-                        </div>
-                    </a>
-
-                    <a href="subject-004.html" class="subject-card" data-classification="beta">
-                        <div class="card-header">
-                            <div class="card-id">TWF-004</div>
-                            <div class="card-classification beta">BETA</div>
-                        </div>
-                        <div class="card-name">REGULAR MEMBER</div>
-                        <div class="card-info-grid">
-                            <div class="card-info-item">
-                                <div class="card-info-label">THREAT LEVEL</div>
-                                <div class="card-info-value">MODERATE</div>
-                            </div>
-                            <div class="card-info-item">
-                                <div class="card-info-label">ACTIVITY</div>
-                                <div class="card-info-value">MODERATE</div>
-                            </div>
-                        </div>
-                        <div class="card-known-for">
-                            Known for: Consistent participation, reliable presence
-                        </div>
-                        <div class="card-footer">
-                            <div class="card-incidents">3 INCIDENTS</div>
-                            <div class="card-status active">ACTIVE</div>
-                        </div>
-                    </a>
-
-                    <a href="subject-005.html" class="subject-card" data-classification="alpha">
-                        <div class="card-header">
-                            <div class="card-id">TWF-005</div>
-                            <div class="card-classification alpha">ALPHA</div>
-                        </div>
-                        <div class="card-name">QUIET OBSERVER</div>
-                        <div class="card-info-grid">
-                            <div class="card-info-item">
-                                <div class="card-info-label">THREAT LEVEL</div>
-                                <div class="card-info-value">MINIMAL</div>
-                            </div>
-                            <div class="card-info-item">
-                                <div class="card-info-label">ACTIVITY</div>
-                                <div class="card-info-value">LOW</div>
-                            </div>
-                        </div>
-                        <div class="card-known-for">
-                            Known for: Lurking tendencies, minimal interaction
-                        </div>
-                        <div class="card-footer">
-                            <div class="card-incidents">1 INCIDENT</div>
-                            <div class="card-status active">ACTIVE</div>
-                        </div>
-                    </a>
-
-                    <a href="subject-006.html" class="subject-card" data-classification="beta">
-                        <div class="card-header">
-                            <div class="card-id">TWF-006</div>
-                            <div class="card-classification beta">BETA</div>
-                        </div>
-                        <div class="card-name">CASUAL CHATTER</div>
-                        <div class="card-info-grid">
-                            <div class="card-info-item">
-                                <div class="card-info-label">THREAT LEVEL</div>
-                                <div class="card-info-value">MODERATE</div>
-                            </div>
-                            <div class="card-info-item">
-                                <div class="card-info-label">ACTIVITY</div>
-                                <div class="card-info-value">MODERATE</div>
-                            </div>
-                        </div>
-                        <div class="card-known-for">
-                            Known for: Voice channel activity, casual conversations
-                        </div>
-                        <div class="card-footer">
-                            <div class="card-incidents">4 INCIDENTS</div>
-                            <div class="card-status active">ACTIVE</div>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- No Results Message -->
-                <div class="no-results" id="noResults" style="display: none;">
-                    <div class="no-results-icon">⚠</div>
-                    <div class="no-results-title">NO SUBJECTS FOUND</div>
-                    <div class="no-results-text">
-                        No subjects match the current search and filter criteria. 
-                        Please adjust your parameters and try again.
+                    <div class="card-row">
+                        <span class="card-label">ACTIVITY:</span>
+                        <span class="card-value">EXTREME SHITPOSTING</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">KNOWN FOR:</span>
+                        <span class="card-value">Chaos coordination, meme warfare</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">INCIDENTS:</span>
+                        <span class="card-value">47</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">STATUS:</span>
+                        <span class="card-value status-active">ACTIVE</span>
                     </div>
                 </div>
-            </section>
+            </a>
+
+            <a href="subject-002.html" class="subject-card" data-classification="beta" data-name="Subject Beta Two" data-designation="WURZ-002">
+                <div class="card-header">
+                    <h3>SUBJECT BETA TWO</h3>
+                    <span class="file-id">FILE: WURZ-002</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-row">
+                        <span class="card-label">CLASSIFICATION:</span>
+                        <span class="card-value tier-beta">BETA TIER</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">THREAT LEVEL:</span>
+                        <span class="card-value">MODERATE</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">ACTIVITY:</span>
+                        <span class="card-value">VOICE CHAT DOMINATION</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">KNOWN FOR:</span>
+                        <span class="card-value">Late-night gaming sessions</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">INCIDENTS:</span>
+                        <span class="card-value">23</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">STATUS:</span>
+                        <span class="card-value status-active">ACTIVE</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="subject-003.html" class="subject-card" data-classification="sigma" data-name="Subject Sigma Three" data-designation="WURZ-003">
+                <div class="card-header">
+                    <h3>SUBJECT SIGMA THREE</h3>
+                    <span class="file-id">FILE: WURZ-003</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-row">
+                        <span class="card-label">CLASSIFICATION:</span>
+                        <span class="card-value tier-sigma">SIGMA TIER</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">THREAT LEVEL:</span>
+                        <span class="card-value">UNPREDICTABLE</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">ACTIVITY:</span>
+                        <span class="card-value">LONE WOLF OPERATIONS</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">KNOWN FOR:</span>
+                        <span class="card-value">Mysterious disappearances, cryptic messages</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">INCIDENTS:</span>
+                        <span class="card-value">12</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">STATUS:</span>
+                        <span class="card-value status-monitoring">MONITORING</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="subject-004.html" class="subject-card" data-classification="gamma" data-name="Subject Gamma Four" data-designation="WURZ-004">
+                <div class="card-header">
+                    <h3>SUBJECT GAMMA FOUR</h3>
+                    <span class="file-id">FILE: WURZ-004</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-row">
+                        <span class="card-label">CLASSIFICATION:</span>
+                        <span class="card-value tier-gamma">GAMMA TIER</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">THREAT LEVEL:</span>
+                        <span class="card-value">LOW</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">ACTIVITY:</span>
+                        <span class="card-value">STANDARD ENGAGEMENT</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">KNOWN FOR:</span>
+                        <span class="card-value">Helpful advice, positive vibes</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">INCIDENTS:</span>
+                        <span class="card-value">8</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">STATUS:</span>
+                        <span class="card-value status-active">ACTIVE</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="subject-005.html" class="subject-card" data-classification="omega" data-name="Subject Omega Five" data-designation="WURZ-005">
+                <div class="card-header">
+                    <h3>SUBJECT OMEGA FIVE</h3>
+                    <span class="file-id">FILE: WURZ-005</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-row">
+                        <span class="card-label">CLASSIFICATION:</span>
+                        <span class="card-value tier-omega">OMEGA TIER</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">THREAT LEVEL:</span>
+                        <span class="card-value">MINIMAL</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">ACTIVITY:</span>
+                        <span class="card-value">OCCASIONAL LURKING</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">KNOWN FOR:</span>
+                        <span class="card-value">Rare appearances, emoji reactions</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">INCIDENTS:</span>
+                        <span class="card-value">3</span>
+                    </div>
+                    <div class="card-row">
+                        <span class="card-label">STATUS:</span>
+                        <span class="card-value status-inactive">INACTIVE</span>
+                    </div>
+                </div>
+            </a>
+        </section>
+
+        <!-- No Results Message -->
+        <div class="no-results" id="noResults" style="display: none;">
+            <h3>NO RESULTS FOUND</h3>
+            <p>No subjects match your search criteria. Please adjust your search terms or filter settings.</p>
         </div>
     </main>
-
-    <!-- Bottom Classification Banner -->
-    <div class="classification-banner bottom">PUBLIC INFORMATION // FROM THE WORD OF MAN</div>
 
     <script src="script.js"></script>
 </body>
