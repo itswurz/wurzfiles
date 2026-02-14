@@ -31,6 +31,12 @@
             position: fixed;
             height: 100vh;
             overflow-y: auto;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .sidebar.hidden {
+            transform: translateX(-100%);
         }
         
         .sidebar .logo {
@@ -95,6 +101,26 @@
             margin-left: 250px;
             flex: 1;
             padding: 0;
+            transition: margin-left 0.3s ease;
+        }
+        
+        .main-content.full-width {
+            margin-left: 0;
+        }
+        
+        .sidebar-toggle {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            margin-right: 15px;
+        }
+        
+        .sidebar-toggle:hover {
+            background-color: #333;
         }
         
         .top-bar {
@@ -104,6 +130,11 @@
             border-bottom: 3px solid #000;
             display: flex;
             justify-content: space-between;
+            align-items: center;
+        }
+        
+        .top-bar-left {
+            display: flex;
             align-items: center;
         }
         
@@ -151,6 +182,8 @@
             margin-bottom: 15px;
             border-bottom: 1px solid #000;
             padding-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         
         .subject-name {
@@ -287,11 +320,95 @@
             font-size: 13px;
             display: none;
         }
+        
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.hidden {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar:not(.hidden) {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .content-area {
+                padding: 20px 15px;
+            }
+            
+            .top-bar {
+                padding: 15px;
+            }
+            
+            .top-bar .status {
+                font-size: 10px;
+            }
+            
+            .top-bar .date {
+                font-size: 10px;
+            }
+            
+            .classification-banner {
+                font-size: 10px;
+                padding: 6px 10px;
+            }
+            
+            .subject-card {
+                padding: 15px;
+            }
+            
+            .subject-name {
+                font-size: 16px;
+            }
+            
+            .search-box {
+                flex-direction: column;
+            }
+            
+            .search-button {
+                width: 100%;
+            }
+            
+            .subject-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 200px;
+            }
+            
+            .top-bar .status {
+                display: none;
+            }
+            
+            .subject-info p {
+                font-size: 12px;
+            }
+            
+            .filter-tags {
+                gap: 5px;
+            }
+            
+            .filter-tag {
+                font-size: 10px;
+                padding: 4px 8px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="sidebar">
+        <div class="sidebar" id="sidebar">
             <div class="logo">
                 <h1>WURZ FILES</h1>
                 <div class="subtitle">Intelligence Database</div>
@@ -310,15 +427,18 @@
             </div>
         </div>
         
-        <div class="main-content">
+        <div class="main-content" id="mainContent">
             <div class="top-bar">
-                <div class="status">SUBJECT REGISTRY</div>
+                <div class="top-bar-left">
+                    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+                    <div class="status">SUBJECT REGISTRY</div>
+                </div>
                 <div class="date">FEB 14 2026</div>
             </div>
             
             <div class="content-area">
                 <div class="classification-banner">
-                    PUBLIC INFORMATION // THROUGH THE EYES
+                    TOP SECRET // WURZ EYES ONLY
                 </div>
                 
                 <div class="search-container">
@@ -445,7 +565,7 @@
             </div>
             
             <div class="footer">
-                <p>PUBLIC INFORMATION // WURZ FILES</p>
+                <p>TOP SECRET // WURZ FILES</p>
                 <p>Last Updated: Feb 2026</p>
             </div>
         </div>
@@ -453,6 +573,14 @@
     
     <script>
         let currentFilter = 'ALL';
+        
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('mainContent');
+            
+            sidebar.classList.toggle('hidden');
+            mainContent.classList.toggle('full-width');
+        }
         
         function searchSubjects() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
