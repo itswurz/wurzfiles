@@ -621,6 +621,337 @@ a {
     border-left: 3px solid #ff0000;
 }
 
+.redacted-inline {
+    background-color: #333;
+    color: #333;
+    padding: 2px 8px;
+    user-select: none;
+}
+
+/* ----------------------------------------------------------------------------
+   IP ADDRESSES SECTION
+   ---------------------------------------------------------------------------- */
+
+.ip-log {
+    margin-top: 15px;
+}
+
+.ip-entry {
+    border: 1px solid #666;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.ip-entry:last-child {
+    margin-bottom: 0;
+}
+
+.ip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #444;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.ip-address {
+    font-weight: bold;
+    color: #4488ff;
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.ip-location {
+    color: #999;
+    font-size: 12px;
+}
+
+.ip-details {
+    font-size: 12px;
+    color: #ccc;
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.ip-notes {
+    font-size: 13px;
+    color: #aaa;
+    line-height: 1.6;
+    border-left: 2px solid #444;
+    padding-left: 12px;
+}
+
+/* ----------------------------------------------------------------------------
+   PLATFORMS SECTION
+   ---------------------------------------------------------------------------- */
+
+.platform-list {
+    margin-top: 15px;
+}
+
+.platform-entry {
+    border: 1px solid #666;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.platform-entry:last-child {
+    margin-bottom: 0;
+}
+
+.platform-entry h3 {
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    color: #fff;
+    border-bottom: 1px solid #444;
+    padding-bottom: 6px;
+}
+
+.platform-details {
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.platform-details p {
+    margin-bottom: 6px;
+    color: #ccc;
+}
+
+.platform-details strong {
+    color: #fff;
+}
+
+/* ----------------------------------------------------------------------------
+   RELATIONSHIPS SECTION
+   ---------------------------------------------------------------------------- */
+
+.relationship-section {
+    margin-bottom: 20px;
+}
+
+.relationship-section:last-child {
+    margin-bottom: 0;
+}
+
+.relationship-section h3 {
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    color: #fff;
+    border-bottom: 1px solid #666;
+    padding-bottom: 6px;
+}
+
+.connection-entry {
+    border: 1px solid #444;
+    padding: 12px;
+    margin-bottom: 12px;
+    background-color: #050505;
+}
+
+.connection-entry:last-child {
+    margin-bottom: 0;
+}
+
+.connection-entry p {
+    margin-bottom: 6px;
+    font-size: 13px;
+}
+
+.connection-type {
+    color: #4488ff;
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.connection-details {
+    color: #aaa;
+    line-height: 1.6;
+}
+
+.connection-entry a {
+    color: #4488ff;
+    text-decoration: underline;
+}
+
+.connection-entry a:hover {
+    color: #66aaff;
+}
+
+/* ----------------------------------------------------------------------------
+   BEHAVIORAL ANALYSIS SUBSECTIONS
+   ---------------------------------------------------------------------------- */
+
+.behavior-subsection {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #333;
+}
+
+.behavior-subsection:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.behavior-subsection h3 {
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: #fff;
+    border-bottom: 1px solid #444;
+    padding-bottom: 6px;
+}
+
+.behavior-subsection p {
+    color: #ccc;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* ----------------------------------------------------------------------------
+   ANALYTICAL FLAG SUMMARY
+   ---------------------------------------------------------------------------- */
+
+.flag-summary {
+    background-color: #0a0a0a;
+}
+
+.flag-entry {
+    border: 2px solid;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.flag-entry:last-child {
+    margin-bottom: 0;
+}
+
+.flag-entry h3 {
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    border: none;
+}
+
+.flag-entry ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.flag-entry li {
+    margin-bottom: 8px;
+    color: #ccc;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.flag-green {
+    border-color: #44ff44;
+    background-color: #001100;
+}
+
+.flag-green h3 {
+    color: #44ff44;
+}
+
+.flag-yellow {
+    border-color: #ffff44;
+    background-color: #111100;
+}
+
+.flag-yellow h3 {
+    color: #ffff44;
+}
+
+.flag-red {
+    border-color: #ff4444;
+    background-color: #110000;
+}
+
+.flag-red h3 {
+    color: #ff4444;
+}
+
+.flag-monitoring {
+    border: 1px solid #4488ff;
+    padding: 15px;
+    background-color: #000a11;
+    margin-top: 15px;
+}
+
+.flag-monitoring h3 {
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    color: #4488ff;
+    border-bottom: 1px solid #4488ff;
+    padding-bottom: 6px;
+}
+
+.flag-monitoring ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.flag-monitoring li {
+    margin-bottom: 8px;
+    color: #ccc;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* ----------------------------------------------------------------------------
+   FINAL REMARKS
+   ---------------------------------------------------------------------------- */
+
+.final-remarks {
+    background-color: #0a0a0a;
+    border: 3px solid #fff;
+}
+
+.remarks-subsection {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #333;
+}
+
+.remarks-subsection:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.remarks-subsection h3 {
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: #fff;
+    border-bottom: 1px solid #666;
+    padding-bottom: 6px;
+}
+
+.remarks-subsection p {
+    color: #ccc;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.conclusion {
+    margin-top: 15px;
+    padding: 12px;
+    border: 2px solid #fff;
+    background-color: #000;
+    color: #fff;
+    font-style: italic;
+    text-align: center;
+}
+
 /* ----------------------------------------------------------------------------
    RESPONSIVE DESIGN - TABLET
    ---------------------------------------------------------------------------- */
